@@ -43,7 +43,7 @@ public class FirstUserStory {
 				+ " : " + playerTwoName;
 	}
 
-	public String convertScore(int point) {
+	private String convertScore(int point) {
 		switch (point) {
 		case 0:
 			return "0";
