@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import fr.platana.impl.SecondUserStory;
 
-public class GameMenuSecondUserStory {
+public class SecondUserStoryGameMenu {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

@@ -11,7 +11,7 @@ import fr.platana.impl.FirstUserStory;
  * @author SAFI
  *
  */
-public class GameMenuFirstUserStory {
+public class FirstUserStoryGameMenu {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
