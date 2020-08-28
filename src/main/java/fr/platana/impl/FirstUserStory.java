@@ -43,7 +43,7 @@ public class FirstUserStory {
 				+ " : " + playerTwoName;
 	}
 
-	private String convertScore(int point) {
+	protected String convertScore(int point)  {
 		switch (point) {
 		case 0:
 			return "0";
@@ -64,5 +64,39 @@ public class FirstUserStory {
 	public void setGameOver(boolean gameOver) {
 		this.gameOver = gameOver;
 	}
+
+	public int getPlayerOneGameScore() {
+		return playerOneGameScore;
+	}
+
+	public void setPlayerOneGameScore(int playerOneGameScore) {
+		this.playerOneGameScore = playerOneGameScore;
+	}
+
+	public int getPlayerTwoGameScore() {
+		return playerTwoGameScore;
+	}
+
+	public void setPlayerTwoGameScore(int playerTwoGameScore) {
+		this.playerTwoGameScore = playerTwoGameScore;
+	}
+
+	public String getPlayerOneName() {
+		return playerOneName;
+	}
+
+	public void setPlayerOneName(String playerOneName) {
+		this.playerOneName = playerOneName;
+	}
+
+	public String getPlayerTwoName() {
+		return playerTwoName;
+	}
+
+	public void setPlayerTwoName(String playerTwoName) {
+		this.playerTwoName = playerTwoName;
+	}
+	
+	
 
 }
