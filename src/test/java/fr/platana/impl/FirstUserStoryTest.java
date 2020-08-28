@@ -16,6 +16,7 @@ class FirstUserStoryTest {
 
 	@BeforeEach
 	public void init() {
+		/* populate the players names*/
 		String firstPlayerName = "Amine";
 		String secondPlayerName = "Platana";
 		this.game = new FirstUserStory(firstPlayerName, secondPlayerName);
@@ -42,6 +43,7 @@ class FirstUserStoryTest {
 
 	@Test
 	void expectExceptionAfterWrongPoint() {
+		/* In the first user story, the player will never reach more than 3 points since we are not dealing with Deuce and advantage cases*/
 		int point = 4;
 		assertThrows(IllegalArgumentException.class, () -> game.convertScore(point));
 	}
@@ -72,6 +74,7 @@ class FirstUserStoryTest {
 
 	@Test
 	void playerOneScoreShouldBeFourty() {
+		/* The first player will score 4 times in succession */
 		for (int i = 0; i < 4; i++) {
 			game.playerOneScores();
 		}
@@ -83,7 +86,7 @@ class FirstUserStoryTest {
 
 	@Test
 	void gameOverAfterOneOfThePlayersWins() {
-		// in this test, I have chosen the player two that will wins
+		//In this test, I have chosen the player two that will wins
 		for (int i = 0; i < 4; i++) {
 			game.playerTwoScores();
 		}
