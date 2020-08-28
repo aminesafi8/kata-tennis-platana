@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 /**
  * 
  * @author SAFI
@@ -45,5 +46,50 @@ class FirstUserStoryTest {
 		assertThrows(IllegalArgumentException.class, () -> game.convertScore(point));
 	}
 
-	
+	@Test
+	void gameScoreShouldBeZero() {
+		String expected = "0 || 0";
+		String actual = game.getScore();
+		boolean result = actual.contains(expected);
+		assertTrue(result);
+	}
+
+	@Test
+	void playerOneScores() {
+		game.playerOneScores();
+		int expected = 15;
+		int actual = Integer.valueOf(game.convertScore(game.getPlayerOneGameScore()));
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void playerTwoScoreShouldBeFifteen() {
+		game.playerTwoScores();
+		int expected = 15;
+		int actual = Integer.valueOf(game.convertScore(game.getPlayerTwoGameScore()));
+		assertEquals(expected, actual, "Player Two Score should be 15");
+	}
+
+	@Test
+	void playerOneScoreShouldBeFourty() {
+		for (int i = 0; i < 4; i++) {
+			game.playerOneScores();
+		}
+		int expected = 40;
+		int actual = Integer.valueOf(game.convertScore(game.getPlayerOneGameScore()));
+
+		assertEquals(expected, actual, "Player One Score should be 40");
+	}
+
+	@Test
+	void gameOverAfterOneOfThePlayersWins() {
+		// in this test, I have chosen the player two that will wins
+		for (int i = 0; i < 4; i++) {
+			game.playerTwoScores();
+		}
+		boolean actual = game.isGameOver();
+		boolean expected = true;
+		assertEquals(expected, actual);
+	}
+
 }
