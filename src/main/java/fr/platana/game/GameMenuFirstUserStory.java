@@ -2,6 +2,8 @@ package fr.platana.game;
 
 import java.util.Scanner;
 
+import org.apache.commons.lang3.StringUtils;
+
 import fr.platana.impl.FirstUserStory;
 
 /**
@@ -14,9 +16,19 @@ public class GameMenuFirstUserStory {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int playerNumber;
-		
-		String playerOne = "Safi";
-		String playerTwo = "Platana";
+
+		String playerOne = "";
+		String playerTwo = "";
+
+		while (StringUtils.isBlank(playerOne)) {
+			System.out.println("Player One Name:");
+			playerOne = sc.nextLine();
+		}
+		while (StringUtils.isBlank(playerTwo)) {
+			System.out.println("Player Two Name:");
+			playerTwo = sc.nextLine();
+		}
+
 		FirstUserStory game = new FirstUserStory(playerOne, playerTwo);
 		System.out.println(game.getScore());
 		while (game.isGameOver() == false) {
