@@ -25,19 +25,19 @@ class FirstUserStoryTest {
 	void convertScore() {
 		String expected1 = "0";
 		String actual1 = game.convertScore(0);
-		assertEquals(expected1, actual1, "Score should be 0");
+		assertEquals(expected1, actual1, "should be 0");
 
 		String expected2 = "15";
 		String actual2 = game.convertScore(1);
-		assertEquals(expected2, actual2, "Score should be 15");
+		assertEquals(expected2, actual2, "should be 15");
 
 		String expected3 = "30";
 		String actual3 = game.convertScore(2);
-		assertEquals(expected3, actual3, "Score should be 30");
+		assertEquals(expected3, actual3, "should be 30");
 
 		String expected4 = "40";
 		String actual4 = game.convertScore(3);
-		assertEquals(expected4, actual4, "Score should be 40");
+		assertEquals(expected4, actual4, "should be 40");
 	}
 
 	@Test
