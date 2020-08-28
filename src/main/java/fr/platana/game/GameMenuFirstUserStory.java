@@ -34,10 +34,16 @@ public class GameMenuFirstUserStory {
 		while (game.isGameOver() == false) {
 			System.out.println("Who scores ?");
 			playerNumber = sc.nextInt();
-			if (playerNumber == 1)
+			switch (playerNumber) {
+			case 1:
 				game.playerOneScores();
-			if (playerNumber == 2)
+				break;
+			case 2:
 				game.playerTwoScores();
+				break;
+			default:
+				System.out.println("Type a correct player number!");
+			}
 		}
 	}
 }
