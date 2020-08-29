@@ -96,4 +96,88 @@ class SecondUserStoryTest {
 		assertEquals(expected, actual);
 	}
 
+	@Test
+	void playersScoresShouldBeEqual() {
+		for (int i = 0; i < 2; i++) {
+			game.playerOneScores();
+			game.playerTwoScores();
+		}
+
+		String playerOneActualScore = game.convertScore(game.getPlayerOneGameScore());
+		String playerTwoActualScore = game.convertScore(game.getPlayerTwoGameScore());
+
+		// assert for equal score
+		assertEquals(playerOneActualScore, playerTwoActualScore);
+
+	}
+
+	@Test
+	void playersScoresShouldBeDeuce() {
+		for (int i = 0; i < 3; i++) {
+			game.playerOneScores();
+		}
+		for (int i = 0; i < 3; i++) {
+			game.playerTwoScores();
+		}
+
+		// assert for Deuce
+		String output = game.getScore();
+		String expected = "Deuce";
+		assertTrue(output.contains(expected));
+	}
+
+	@Test
+	void playerTwoShouldHasAdvantage() {
+		for (int i = 0; i < 3; i++) {
+			game.playerOneScores();
+		}
+		for (int i = 0; i < 3; i++) {
+			game.playerTwoScores();
+		}
+
+		// player two scores to get the advantage after 40-40
+		game.playerTwoScores();
+		String output = game.getScore();
+		String expected = "ADV" + " : " + game.getPlayerTwoName();
+		assertTrue(output.contains(expected));
+	}
+
+	@Test
+	void playerOneScoresAfterAdvantageOfPlayerTwo() {
+		for (int i = 0; i < 3; i++) {
+			game.playerOneScores();
+		}
+		for (int i = 0; i < 4; i++) {
+			game.playerTwoScores();
+		}
+
+		// player one scores to establish the deuce again
+		game.playerOneScores();
+		String output = game.getScore();
+		String expected = "Deuce";
+		assertTrue(output.contains(expected));
+
+	}
+
+	@Test
+	void advantageFromPlayerOneToPlayerTwo() {
+		// player two will get 40
+		for (int i = 0; i < 3; i++) {
+			game.playerTwoScores();
+		}
+		// player two will get 40
+		for (int i = 0; i < 3; i++) {
+			game.playerOneScores();
+		}
+		// player one will get the advantage now
+		game.playerOneScores();
+		// player two get back the game to Deuce
+		game.playerTwoScores();
+		// player two will get the advantage now
+		game.playerTwoScores();
+
+		String output = game.getScore();
+		String expected = "ADV" + " : " + game.getPlayerTwoName();
+		assertTrue(output.contains(expected));
+	}
 }
