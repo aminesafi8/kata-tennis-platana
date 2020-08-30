@@ -15,7 +15,7 @@ public class SecondUserStory {
 	private boolean gameOver = false;
 
 	// for the case of 40-40 score or one of the players has the advantage
-	private boolean deuceMode = false;
+	private boolean deuceOrAdvantageMode = false;
 
 	public SecondUserStory(String playerOneName, String playerTwoName) {
 		this.playerOneName = playerOneName;
@@ -26,9 +26,9 @@ public class SecondUserStory {
 	 * This method will be called when the first player scores
 	 */
 	public void playerOneScores() {
-		if (deuceMode) {
+		if (deuceOrAdvantageMode) {
 			/*
-			 * if deuce mode started, we check if the 1st player already has the advantage
+			 * if deuce/advantage mode started, we check if the 1st player already has the advantage
 			 * so he will win immediately and the game will ends
 			 */
 			if (playerOneGameScore == 4) {
@@ -52,16 +52,16 @@ public class SecondUserStory {
 			}
 
 		} else {
-			/* we are not in the Deuce mode so the 1st player scores and win the game */
+			/* we are not in the deuce/advantage mode so the 1st player scores and win the game */
 			if (playerOneGameScore == 3) {
 				System.out.println(playerOneName + " Win the Game!");
 				setGameOver(true);
 			} else {
 				/* the 1st player scores a new point */
 				playerOneGameScore++;
-				/* for the case of 40-40 score, deuce mode will be activated */
+				/* for the case of 40-40 score, deuce/advantage mode will be activated */
 				if (playerOneGameScore == 3 && playerTwoGameScore == 3)
-					deuceMode = true;
+					deuceOrAdvantageMode = true;
 				System.out.println(getScore());
 			}
 		}
@@ -71,9 +71,9 @@ public class SecondUserStory {
 	 * This method will be called when the second player scores
 	 */
 	public void playerTwoScores() {
-		if (deuceMode) {
+		if (deuceOrAdvantageMode) {
 			/*
-			 * if deuce mode started, we check if the 2nd player already has the advantage
+			 * if deuce/advantage mode started, we check if the 2nd player already has the advantage
 			 * so he will win immediately and the game will ends
 			 */
 			if (playerTwoGameScore == 4) {
@@ -95,16 +95,16 @@ public class SecondUserStory {
 				}
 			}
 		} else {
-			/* we are not in the Deuce mode so the 2nd player scores and win the game */
+			/* we are not in the deuce/advantage so the 2nd player scores and win the game */
 			if (playerTwoGameScore == 3) {
 				System.out.println(playerTwoName + " Win the Game!");
 				setGameOver(true);
 			} else {
 				/* the 2nd player scores a new point */
 				playerTwoGameScore++;
-				/* for the case of 40-40 score, deuce mode will be activated */
+				/* for the case of 40-40 score, deuce/advantage mode will be activated */
 				if (playerTwoGameScore == 3 && playerOneGameScore == 3)
-					deuceMode = true;
+					deuceOrAdvantageMode = true;
 				System.out.println(getScore());
 			}
 		}
@@ -158,24 +158,6 @@ public class SecondUserStory {
 	 */
 	public void setGameOver(boolean gameOver) {
 		this.gameOver = gameOver;
-	}
-
-	/**
-	 * 
-	 * @return true if Deuce mode is started (40-40 or ADV for one of the players)
-	 *         false otherwise
-	 */
-	public boolean isDeuceMode() {
-		return deuceMode;
-	}
-
-	/**
-	 * Set the Deuce mode
-	 * 
-	 * @param deuceMode
-	 */
-	public void setDeuceMode(boolean deuceMode) {
-		this.deuceMode = deuceMode;
 	}
 
 	/**
@@ -244,6 +226,25 @@ public class SecondUserStory {
 	 */
 	public void setPlayerTwoGameScore(int playerTwoGameScore) {
 		this.playerTwoGameScore = playerTwoGameScore;
+	}
+
+	/**
+	 * 
+	 * @return true if Deuce/advantage mode is started (40-40 or ADV for one of the
+	 *         players) false otherwise
+	 */
+
+	public boolean isDeuceOrAdvantageMode() {
+		return deuceOrAdvantageMode;
+	}
+
+	/**
+	 * Set the Deuce/advantage mode
+	 * 
+	 * @param deuceOrAdvantageMode
+	 */
+	public void setDeuceOrAdvantageMode(boolean deuceOrAdvantageMode) {
+		this.deuceOrAdvantageMode = deuceOrAdvantageMode;
 	}
 
 }
